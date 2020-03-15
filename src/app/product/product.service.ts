@@ -4,7 +4,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 import { Product } from './product';
 
-const API_URL = "https://localhost:44367/api/product";
+const API_URL = "http://localhost:64706/product";
 const httpOptions = {
   headers: new HttpHeaders({
     'Content-Type': 'application/json'
