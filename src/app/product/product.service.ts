@@ -4,10 +4,10 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 import { Product } from './product';
 
-const API_URL = "http://localhost:64706/product";
+const API_URL = "/proxy/product";
 const httpOptions = {
   headers: new HttpHeaders({
-    'Content-Type': 'application/json'
+    'Content-Type': 'application/text'
   })
 };
 

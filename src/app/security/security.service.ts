@@ -7,18 +7,19 @@ import { tap } from 'rxjs/operators/tap';
 import { AppUserAuth } from './app-user-auth';
 import { AppUser } from './app-user';
 
-const API_URL = "/api/security/login";
+const API_URL = "/proxy/security/login";
 const headers = new Headers;
 
 
 const httpOptions = {
   headers: new HttpHeaders({
-    'Content-Type': 'application/x-www-form-urlencoded'
-}
+    'Content-Type': 'application/text'
+},
+
   )
 };
 httpOptions.headers.append('Access-Control-Allow-Origin', '*');
-
+httpOptions.headers.append('method','JSONP')
 @Injectable()
 export class SecurityService {
   securityObject: AppUserAuth = new AppUserAuth();
