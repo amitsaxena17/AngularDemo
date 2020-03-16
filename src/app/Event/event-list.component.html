@@ -32,9 +32,9 @@
           </a>
         </td>
         <td>{{eventItem.title}}</td>
-        <td>{{eventItem.description}</td>
-        <td class="text-right">{{eventItem.startDate}}</td>
-        <td>{{eventItem.endDate}}</td>
+        <td>{{eventItem.description}}</td>
+        <td class="text-right">{{eventItem.startDate | date:'medium'}}</td>
+        <td>{{eventItem.endDate | date:'medium' }}</td>
         <td>
           <button (click)="deleteevent(eventItem.id)" class="btn btn-danger">
             <i class="glyphicon glyphicon-trash"></i>

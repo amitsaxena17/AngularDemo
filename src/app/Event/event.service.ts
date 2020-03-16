@@ -20,85 +20,28 @@ export class eventService {
   }
   ngOnInit() {
     this.getevents();
-  }
-
-  // getevents(): Observable<Event[]> {
-   
-  //   var headerAPI = {
-  //     headers: new HttpHeaders()
-  //       .set('Authorization',  this.BearerToken)
-  //   }
-  
-  // return this.http.get<EventColl>(API_URL + '/events',headerAPI)
-  // .subscribe(data => 
-  //   {
-  //     this.events = data.items;
-  //   });
-  
+  }  
   getevents(): Observable<Event[]> {
    
     var headerAPI = {
       headers: new HttpHeaders()
         .set('Authorization',  this.BearerToken)
     }
-    return this.http.get<EventColl>(API_URL + '/events',headerAPI).pipe(
-      map(res => {
-        return res.items.map(item => {
-          return new Event(
-            item.id,
-            item.title,
-            item.description,
-            item.startDate,
-            item.endDate
-          );
-        });
-      })
-    );
+    return this.http.get<EventColl>(API_URL + '/events',headerAPI)
+    .map(result=>result.items)
+      
 }
-
-  
-
-  // function() {
-   
-  //   var headerAPI = {
-  //     headers: new HttpHeaders()
-  //       .set('Authorization',  this.BearerToken)
-  //   }
-   
-  //   var _getAllEvents = function () {
-  //     return this.http.get(API_URL,headerAPI)
-  //       .then(function (response) {
-  //           return response.data
-  //       });
-  //     }
-  //      return {
-  //       getevents: _getAllEvents
-  //       };
-  //   }
-
-     
-  
-
-
-  
 
   addevent(entity: Event) {
     var headerAPI = {
       headers: new HttpHeaders()
         .set('Authorization',  this.BearerToken)
     }
-    console.log(event);
-    return this.http.post(API_URL + '/events',entity) ;
-
-    
+    return this.http.post(API_URL + '/events',entity,headerAPI) ; 
   }
-  
-
-  updateevent(entity: Event): Observable<any> {
-    return this.http.put(API_URL, entity, httpOptions);
-  }
+ 
 
   deleteevent(id: number): Observable<Event> {
-    return this.http.delete<Event>(API_URL + id.toString(), httpOptions);
+    alert("If you hire me, I'll implement it");
   }
 }
