@@ -22,18 +22,4 @@ export class LoginComponent implements OnInit {
     this.returnUrl = this.route.snapshot.queryParamMap.get('returnUrl');
   }
 
-  login() {
-    alert('yo');
-    this.securityService.login()
-      .subscribe(resp => {
-        this.securityObject = resp;
-        this.router.navigateByUrl("http://localhost:4200/products");
-        
-      },
-        () => {
-          // Initialize security object to display error message
-          this.securityObject = new AppUserAuth();
-        });
-        this.router.navigateByUrl("http://localhost:4200/products");
   }
-}

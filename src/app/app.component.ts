@@ -10,10 +10,15 @@ export class AppComponent {
   title: string = "Civic Plus Trainings Events";
   securityObject: AppUserAuth = null;
 
-  constructor(private securityService: SecurityService) {
+  constructor(public securityService: SecurityService) {
     this.securityObject = securityService.securityObject;
+    
   }
-
+  login(): void {
+    event.preventDefault();
+    alert('here');
+    this.securityService.login();
+  }
   logout(): void {
     this.securityService.logout();
   }
