@@ -1,9 +1,10 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders,HttpErrorResponse } from '@angular/common/http';
 import {  map} from "rxjs/operators";
 import { Event, EventColl } from './event';
-
+import { catchError } from 'rxjs/operators';
+import { ErrorObservable } from 'rxjs/observable/ErrorObservable';
 const API_URL = "https://interview.cpdv.ninja/1a8dd55d-50ce-4220-92f7-a3e558520c75/api";
 const httpOptions = {
   headers: new HttpHeaders({
@@ -37,11 +38,20 @@ export class eventService {
       headers: new HttpHeaders()
         .set('Authorization',  this.BearerToken)
     }
-    return this.http.post(API_URL + '/events',entity,headerAPI) ; 
+    return this.http.post(API_URL + '/events',entity,headerAPI).pipe(catchError(this.handleError)); ; 
   }
- 
-  deleteevent()
+  
+  handleError(errorResponse: HttpErrorResponse) {
+    if (errorResponse.error instanceof ErrorEvent) {
+        console.error('Client Side Error :', errorResponse.error.message);
+    } else {
+        console.error('Server Side Error :', errorResponse);
+    }
+    return new ErrorObservable('There is a problem with the service. We are notified & working on it. Please try again later.');
+    }
+    
+  deleteEvent()
   {
-    alert("If you hire me, I'll implement it");
+    alert("Only If you hire me!");
   }
 }

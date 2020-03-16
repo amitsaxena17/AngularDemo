@@ -31,18 +31,13 @@ export class eventDetailComponent implements OnInit {
       this.initevent();
     }
     else {
-      // Get a event from event service
-      // this.eventService.getevent(id)
-      //   .subscribe(event => {
-      //     this.eventItem = event;
-      //     this.originalevent = Object.assign({}, this.eventItem)
-      //   });
+  
     }
   }
 
   private initevent(): void {
     // Add a new event
-    this.event = new Event({
+    this.eventItem = new Event({
       id:-1,
       title:'',
       description:'',
@@ -58,15 +53,12 @@ export class eventDetailComponent implements OnInit {
   saveData(): void {
     if (this.event.id) {
       // Update event
-      this.eventService.updateevent(this.event)
-        .subscribe(event => { this.event = event },
-          () => null,
-          () => this.dataSaved());
+     
     }
     else {
       // Add a event
-      this.eventService.addevent(this.event)
-        .subscribe(event => { this.event = event },
+      this.eventService.addevent(this.eventItem)
+        .subscribe(event => { this.eventItem = event },
           () => null,
           () => this.dataSaved());
     }

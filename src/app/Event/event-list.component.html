@@ -27,16 +27,16 @@
     <tbody>
       <tr *ngFor="let eventItem of events">
         <td>
-          <a href="#" class="btn btn-primary" [routerLink]="['/eventDetail', eventItem.eventId]">
-            <i class="glyphicon glyphicon-pencil"></i>
-          </a>
+          <button (click)="deleteEvent()" class="btn btn-primary">
+            <i class="glyphicon glyphicon-edit"></i>
+          </button>
         </td>
         <td>{{eventItem.title}}</td>
         <td>{{eventItem.description}}</td>
-        <td class="text-right">{{eventItem.startDate | date:'medium'}}</td>
-        <td>{{eventItem.endDate | date:'medium' }}</td>
+        <td class="text-right">{{eventItem.startDate | date:'mediumDate'}}</td>
+        <td>{{eventItem.endDate | date:'mediumDate' }}</td>
         <td>
-          <button (click)="deleteevent()" class="btn btn-danger">
+          <button (click)="deleteEvent()" class="btn btn-danger">
             <i class="glyphicon glyphicon-trash"></i>
           </button>
         </td>

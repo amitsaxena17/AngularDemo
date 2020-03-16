@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
-import { Event, BlacklistData, EventColl } from './event';
+import { Event,  EventColl } from './event';
 import { eventService } from './event.service';
 
 @Component({
@@ -25,7 +25,10 @@ export class eventListComponent implements OnInit {
      this.eventService.getevents()
         .subscribe(events => this.events = events);
     }
-  
+    deleteEvent()
+    {
+      this.eventService.deleteEvent();
+    }
 
   addevent(): void {
     this.router.navigate(['/eventDetail', -1]);

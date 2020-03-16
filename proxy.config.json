@@ -1,6 +1,6 @@
 {
   "/proxy/*" : {
-    "target": "http://localhost:64706",
+    "target": "https://interview.cpdv.ninja/1a8dd55d-50ce-4220-92f7-a3e558520c75/api",
     "secure": false,
 
     "pathRewrite": {"^/proxy":""}
