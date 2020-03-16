@@ -5,24 +5,23 @@ import { Location } from '@angular/common';
 
 import { eventService } from "./event.service";
 import { Event } from './event';
-import { Category } from '../category/category';
-import { CategoryService } from '../category/category.service';
+
 
 @Component({
   templateUrl: './event-detail.component.html'
 })
 export class eventDetailComponent implements OnInit {
-  event: Event;
+  eventItem: Event;
   originalevent: Event;
-  categories: Category[];
+  
 
-  constructor(private categoryService: CategoryService,
+  constructor(
     private eventService: eventService,
     private route: ActivatedRoute,
     private location: Location) {}
 
   ngOnInit() {
-    this.getCategories();
+  
     // Get the passed in event id
     let id = +this.route.snapshot.paramMap.get('id');
     // Create or load a event
@@ -46,11 +45,11 @@ export class eventDetailComponent implements OnInit {
 
   private initevent(): void {
     // Add a new event
-    this.event = new Event({
+    this.eventItem = new Event({
       startDate: new Date(),
       id: -1
     });
-    this.originalevent = Object.assign({}, this.event);
+    this.originalevent = Object.assign({}, this.eventItem);
   }
 
   // private getCategories(): void {
@@ -59,7 +58,7 @@ export class eventDetailComponent implements OnInit {
   // }
 
   saveData(): void {
-    if (this.event.id) {
+    if (this.eventItem.id) {
       // Update event
       // this.eventService.updateevent(this.event)
       //   .subscribe(event => { this.event = event },
@@ -68,8 +67,8 @@ export class eventDetailComponent implements OnInit {
     }
     else {
       // Add a event
-      this.eventService.addevent(this.event)
-        .subscribe(event => { this.event = event },
+      this.eventService.addevent(this.eventItem)
+        .subscribe(event => { this.eventItem = event },
           () => null,
           () => this.dataSaved());
     }
