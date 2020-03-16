@@ -33,12 +33,12 @@ export class eventService {
       
 }
 
-  addevent(entity: Event) {
+  addevent(entity: Event): Observable<Event>  {
     var headerAPI = {
       headers: new HttpHeaders()
         .set('Authorization',  this.BearerToken)
     }
-    return this.http.post(API_URL + '/events',entity,headerAPI); ; 
+    return this.http.post<Event>(API_URL + '/events',entity,headerAPI); ; 
   }
   
   handleError(errorResponse: HttpErrorResponse) {

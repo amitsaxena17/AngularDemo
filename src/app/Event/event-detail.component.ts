@@ -47,7 +47,10 @@ export class eventDetailComponent implements OnInit {
     // Add a new event
     this.eventItem = new Event({
       startDate: new Date(),
-      id: -1
+      id: -1,
+      endDate: new Date,
+      title:'',
+      description:''
     });
     this.originalevent = Object.assign({}, this.eventItem);
   }
