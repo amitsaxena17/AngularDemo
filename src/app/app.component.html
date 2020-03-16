@@ -8,23 +8,19 @@
     </div>
     <ul class="nav navbar-nav">
       <li>
-        <a routerLink="/events" *ngIf="securityObject.canAccessProducts">
+        <a routerLink="/products" *ngIf="securityObject.canAccessProducts">
           Events
         </a>
       </li>
     </ul>
     <ul class="nav navbar-nav navbar-right">
       <li>
-        <a href="#" ng-click="$scope.login()" *ngIf="!securityObject.isAuthenticated">
+        <a routerLink="login" *ngIf="!securityObject.isAuthenticated">
           Login
         </a>
-     
-
         <a href="#" (onclick)="logout()" *ngIf="securityObject.isAuthenticated">
           Logout {{securityObject.userName}}
         </a>
-        <a class='nav-link' (click)="securityService.doLogout()" routerLink="/logout">Log out</a> 
-
       </li>
     </ul>
   </div>

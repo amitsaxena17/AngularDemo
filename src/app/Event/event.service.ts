@@ -23,7 +23,7 @@ export class eventService {
   }
 
   getevents(): Observable<Event[]> {
-    var BearerToken = 'Bearer ' +localStorage.getItem("bearerToken").toString();
+    var BearerToken = 'Bearer ' +localStorage.getItem("bearerToken");
     
     var headerAPI = {
       headers: new HttpHeaders()
