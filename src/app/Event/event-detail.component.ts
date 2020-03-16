@@ -1,23 +1,28 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
+import { Observable } from 'rxjs/Observable';
 import { Location } from '@angular/common';
 
 import { eventService } from "./event.service";
 import { Event } from './event';
+import { Category } from '../category/category';
+import { CategoryService } from '../category/category.service';
+
 @Component({
   templateUrl: './event-detail.component.html'
 })
 export class eventDetailComponent implements OnInit {
-  eventItem: Event;
+  event: Event;
   originalevent: Event;
- 
-  constructor(
+  categories: Category[];
+
+  constructor(private categoryService: CategoryService,
     private eventService: eventService,
     private route: ActivatedRoute,
-    private location: Location) { }
+    private location: Location) {}
 
   ngOnInit() {
-    // this.getCategories();
+    this.getCategories();
     // Get the passed in event id
     let id = +this.route.snapshot.paramMap.get('id');
     // Create or load a event
@@ -25,31 +30,49 @@ export class eventDetailComponent implements OnInit {
   }
 
   private createOrLoadevent(id: number) {
-    console.log(id);
     if (id == -1) {
       // Create new event object
       this.initevent();
     }
     else {
-  
+      // Get a event from event service
+      // this.eventService.getevent(id)
+      //   .subscribe(event => {
+      //     this.event = event;
+      //     this.originalevent = Object.assign({}, this.event)
+      //   });
     }
   }
 
   private initevent(): void {
     // Add a new event
-    this.event = new Event();
+    this.event = new Event({
+      startDate: new Date(),
+      id: -1
+    });
+    this.originalevent = Object.assign({}, this.event);
   }
 
- 
+  // private getCategories(): void {
+  //   this.categoryService.getCategories()
+  //     .subscribe(categories => this.categories = categories);
+  // }
 
   saveData(): void {
-    
+    if (this.event.id) {
+      // Update event
+      // this.eventService.updateevent(this.event)
+      //   .subscribe(event => { this.event = event },
+      //     () => null,
+      //     () => this.dataSaved());
+    }
+    else {
       // Add a event
-      this.eventService.addevent(this.eventItem);
-        // .subscribe(event => { this.eventItem = event },
-        //   () => null,
-        //   () => this.dataSaved());
-    
+      this.eventService.addevent(this.event)
+        .subscribe(event => { this.event = event },
+          () => null,
+          () => this.dataSaved());
+    }
   }
 
   private dataSaved(): void {
