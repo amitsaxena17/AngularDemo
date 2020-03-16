@@ -31,10 +31,4 @@ export class eventListComponent implements OnInit {
     this.router.navigate(['/eventDetail', -1]);
   }
 
-  // deleteevent(id: number): void {
-  //   if (confirm("Delete this event?")) {
-  //     this.eventService.deleteevent(id)
-  //       .subscribe(() => this.events = this.events.filter(p => p.id != id));
-  //   }
-  // }
 }

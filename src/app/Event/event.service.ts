@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import {  map} from "rxjs/operators";
-import { Event } from './event';
+import { Event, EventColl } from './event';
 
 const API_URL = "https://interview.cpdv.ninja/1a8dd55d-50ce-4220-92f7-a3e558520c75/api";
 const httpOptions = {
@@ -41,7 +41,7 @@ export class eventService {
       headers: new HttpHeaders()
         .set('Authorization',  this.BearerToken)
     }
-    return this.http.get(API_URL + '/events',headerAPI).pipe(
+    return this.http.get<EventColl>(API_URL + '/events',headerAPI).pipe(
       map(res => {
         return res.items.map(item => {
           return new Event(
