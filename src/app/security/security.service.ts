@@ -1,9 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
-import { of } from 'rxjs/observable/of';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { tap } from 'rxjs/operators/tap';
-import { LOGIN_MOCKS } from './login-mocks';
 import { AppUserAuth } from './app-user-auth';
 import { AppUser } from './app-user';
 import 'rxjs/add/operator/map';
@@ -46,8 +43,7 @@ export class SecurityService {
           response['access_token']);
           this.securityObject.bearerToken = response['access_token'];
           this.securityObject.isAuthenticated=true;
-          this.securityObject.canAccessProducts=true;
-          this.securityObject.canAddCategory = true;
+       
           if (this.securityObject.bearerToken) {
               return this.securityObject;
           } else {
@@ -56,11 +52,6 @@ export class SecurityService {
               this.securityObject.bearerToken = "";
               this.securityObject.isAuthenticated = false;
             
-              this.securityObject.canAccessProducts = false;
-              this.securityObject.canAddProduct = false;
-              this.securityObject.canSaveProduct = false;
-              this.securityObject.canAccessCategories = false;
-              this.securityObject.canAddCategory = false;
               return this.securityObject;
           }
         });
@@ -77,11 +68,6 @@ export class SecurityService {
     this.securityObject.bearerToken = "";
     this.securityObject.isAuthenticated = false;
   
-    this.securityObject.canAccessProducts = false;
-    this.securityObject.canAddProduct = false;
-    this.securityObject.canSaveProduct = false;
-    this.securityObject.canAccessCategories = false;
-    this.securityObject.canAddCategory = false;
   
     //localStorage.removeItem("bearerToken");
   }
