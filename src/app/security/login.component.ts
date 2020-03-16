@@ -23,6 +23,7 @@ export class LoginComponent implements OnInit {
   }
 
   login() {
+    alert('yo');
     this.securityService.login()
       .subscribe(resp => {
         this.securityObject = resp;
