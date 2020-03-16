@@ -44,12 +44,17 @@ export class eventService {
   
 }
 
-  getevent(id: number): Observable<Event> {
-    return this.http.get<Event>(API_URL + id.toString());
-  }
+  
 
-  addevent(entity: Event): Observable<Event> {
-    return this.http.post<Event>(API_URL, entity, httpOptions);
+  addevent(entity: Event) {
+    var headerAPI = {
+      headers: new HttpHeaders()
+        .set('Authorization',  this.BearerToken)
+    }
+    console.log(event);
+    return this.http.post(API_URL + '/events',entity) ;
+
+    
   }
   
 
