@@ -1,11 +1,7 @@
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs/Observable';
-import { of } from 'rxjs/observable/of';
+
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { tap } from 'rxjs/operators/tap';
-import { LOGIN_MOCKS } from './login-mocks';
 import { AppUserAuth } from './app-user-auth';
-import { AppUser } from './app-user';
 import 'rxjs/add/operator/map';
 
 import { Response } from '@angular/http'
@@ -28,7 +24,7 @@ export class SecurityService {
 
   }
 
-  login(): Observable<AppUserAuth> {
+  login(): void {
     // Initialize security object
     this.resetSecurityObject();
  
@@ -39,7 +35,7 @@ export class SecurityService {
     let headers = new Headers();
     headers.append('Content-Type', 'application/json');
 
-    return this.http.post(API_URL, {clientId, clientSecret}, {
+     this.http.post(API_URL, {clientId, clientSecret}, {
      
           headers: new HttpHeaders().set('Content-Type', 'application/json'),
         }).map((response: Response) => {
@@ -84,6 +80,6 @@ export class SecurityService {
     this.securityObject.canAccessCategories = false;
     this.securityObject.canAddCategory = false;
   
-    //localStorage.removeItem("bearerToken");
+    localStorage.removeItem("bearerToken");
   }
 }
