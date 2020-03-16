@@ -40,8 +40,8 @@ export class eventService {
     return this.http.post(API_URL + '/events',entity,headerAPI) ; 
   }
  
-
-  deleteevent(id: number): Observable<Event> {
+  deleteevent()
+  {
     alert("If you hire me, I'll implement it");
   }
 }
