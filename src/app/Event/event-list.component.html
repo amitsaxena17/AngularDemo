@@ -25,18 +25,18 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let event of events">
+      <tr *ngFor="let eventItem of events">
         <td>
-          <a href="#" class="btn btn-primary" [routerLink]="['/eventDetail', event.eventId]">
+          <a href="#" class="btn btn-primary" [routerLink]="['/eventDetail', eventItem.eventId]">
             <i class="glyphicon glyphicon-pencil"></i>
           </a>
         </td>
-        <td>{{event.title}}</td>
-        <td>{{event.description}</td>
-        <td class="text-right">{{event.startDate}}</td>
-        <td>{{event.endDate}}</td>
+        <td>{{eventItem.title}}</td>
+        <td>{{eventItem.description}</td>
+        <td class="text-right">{{eventItem.startDate}}</td>
+        <td>{{eventItem.endDate}}</td>
         <td>
-          <button (click)="deleteevent(event.id)" class="btn btn-danger">
+          <button (click)="deleteevent(eventItem.id)" class="btn btn-danger">
             <i class="glyphicon glyphicon-trash"></i>
           </button>
         </td>

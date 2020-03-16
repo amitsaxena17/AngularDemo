@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Observable, of } from 'rxjs';
+
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import {
   map
@@ -21,28 +21,64 @@ export class eventService {
     this.BearerToken = 'Bearer ' +localStorage.getItem("bearerToken");
   }
 
-  getevents(): Observable<Event[]> {
+//   getevents(): Observable<Event[]> {
    
-    var headerAPI = {
-      headers: new HttpHeaders()
-        .set('Authorization',  this.BearerToken)
-    }
-    return this.http.get(API_URL + '/events',headerAPI).pipe(
-      map(res => {
-        return res.items.map(item => {
-          return new Event(
-            item.id,
-            item.title,
-            item.description,
-            item.startDate,
-            item.endDate
-          );
+//     var headerAPI = {
+//       headers: new HttpHeaders()
+//         .set('Authorization',  this.BearerToken)
+//     }
+//     return this.http.get(API_URL + '/events',headerAPI).pipe(
+//       map(res => {
+//         return res.items.map(item => {
+//           return new Event(
+//             item.id,
+//             item.title,
+//             item.description,
+//             item.startDate,
+//             item.endDate
+//           );
+//         });
+//       })
+//     );
+// }
+getevents(){
+   
+      var headerAPI = {
+        headers: new HttpHeaders()
+          .set('Authorization',  this.BearerToken)
+      }
+     
+      this.http.get(API_URL + '/events',headerAPI)
+      .success(function(data) {
+        return data.items; // response data
+        
         });
-      })
-    );
+      };
+       
+    };
+  
+
+  // function() {
+   
+  //   var headerAPI = {
+  //     headers: new HttpHeaders()
+  //       .set('Authorization',  this.BearerToken)
+  //   }
+   
+  //   var _getAllEvents = function () {
+  //     return this.http.get(API_URL,headerAPI)
+  //       .then(function (response) {
+  //           return response.data
+  //       });
+  //     }
+  //      return {
+  //       getevents: _getAllEvents
+  //       };
+  //   }
+
      
   
-}
+
 
   
 

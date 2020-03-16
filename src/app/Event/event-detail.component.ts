@@ -32,11 +32,11 @@ export class eventDetailComponent implements OnInit {
     }
     else {
       // Get a event from event service
-      this.eventService.getevent(id)
-        .subscribe(event => {
-          this.eventItem = event;
-          this.originalevent = Object.assign({}, this.eventItem)
-        });
+      // this.eventService.getevent(id)
+      //   .subscribe(event => {
+      //     this.eventItem = event;
+      //     this.originalevent = Object.assign({}, this.eventItem)
+      //   });
     }
   }
 
