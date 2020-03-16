@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
-import { Observable } from 'rxjs/Observable';
 import { Location } from '@angular/common';
 
 import { eventService } from "./event.service";
@@ -31,7 +30,7 @@ export class eventDetailComponent implements OnInit {
   private createOrLoadevent(id: number) {
     if (id == -1) {
       // Create new event object
-      this.initevent();
+     this.initevent();
     }
     else {
       // Get a event from event service
@@ -61,20 +60,13 @@ export class eventDetailComponent implements OnInit {
   // }
 
   saveData(): void {
-    if (this.eventItem.id) {
-      // Update event
-      // this.eventService.updateevent(this.event)
-      //   .subscribe(event => { this.event = event },
-      //     () => null,
-      //     () => this.dataSaved());
-    }
-    else {
+ 
       // Add a event
       this.eventService.addevent(this.eventItem)
         .subscribe(event => { this.eventItem = event },
           () => null,
           () => this.dataSaved());
-    }
+    
   }
 
   private dataSaved(): void {
