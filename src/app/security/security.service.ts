@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs/Observable';
+
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { AppUserAuth } from './app-user-auth';
 import 'rxjs/add/operator/map';
@@ -24,7 +24,7 @@ export class SecurityService {
 
   }
 
-  login(): Observable<AppUserAuth> {
+  login(): void {
     // Initialize security object
     this.resetSecurityObject();
  
@@ -35,7 +35,7 @@ export class SecurityService {
     let headers = new Headers();
     headers.append('Content-Type', 'application/json');
 
-    return this.http.post(API_URL, {clientId, clientSecret}, {
+     this.http.post(API_URL, {clientId, clientSecret}, {
      
           headers: new HttpHeaders().set('Content-Type', 'application/json'),
         }).map((response: Response) => {
