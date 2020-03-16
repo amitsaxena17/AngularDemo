@@ -1,4 +1,4 @@
 export class AppUser {
-  clientId: string = "";
-  clientSecret: string = "";
-};
+  userName: string = "";
+  password: string = "";
+}
