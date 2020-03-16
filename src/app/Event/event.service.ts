@@ -47,19 +47,19 @@ export class eventService {
   
 }
 
-  getevent(id: number): Observable<event> {
-    return this.http.get<event>(API_URL + id.toString());
+  getevent(id: number): Observable<Event> {
+    return this.http.get<Event>(API_URL + id.toString());
   }
 
-  addevent(entity: event): Observable<event> {
-    return this.http.post<event>(API_URL, entity, httpOptions);
+  addevent(entity: Event): Observable<Event> {
+    return this.http.post<Event>(API_URL, entity, httpOptions);
   }
 
-  updateevent(entity: event): Observable<any> {
+  updateevent(entity: Event): Observable<any> {
     return this.http.put(API_URL, entity, httpOptions);
   }
 
-  deleteevent(id: number): Observable<event> {
-    return this.http.delete<event>(API_URL + id.toString(), httpOptions);
+  deleteevent(id: number): Observable<Event> {
+    return this.http.delete<Event>(API_URL + id.toString(), httpOptions);
   }
 }
