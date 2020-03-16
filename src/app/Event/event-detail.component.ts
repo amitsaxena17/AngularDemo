@@ -4,16 +4,13 @@ import { Location } from '@angular/common';
 
 import { eventService } from "./event.service";
 import { Event } from './event';
-import { Category } from '../category/category';
-
 @Component({
   templateUrl: './event-detail.component.html'
 })
 export class eventDetailComponent implements OnInit {
-  event: Event;
+  eventItem: Event;
   originalevent: Event;
-  categories: Category[];
-
+ 
   constructor(
     private eventService: eventService,
     private route: ActivatedRoute,
@@ -28,6 +25,7 @@ export class eventDetailComponent implements OnInit {
   }
 
   private createOrLoadevent(id: number) {
+    console.log(id);
     if (id == -1) {
       // Create new event object
       this.initevent();
@@ -36,15 +34,23 @@ export class eventDetailComponent implements OnInit {
       // Get a event from event service
       this.eventService.getevent(id)
         .subscribe(event => {
-          this.event = event;
-          this.originalevent = Object.assign({}, this.event)
+          this.eventItem = event;
+          this.originalevent = Object.assign({}, this.eventItem)
         });
     }
   }
 
   private initevent(): void {
     // Add a new event
-    this.originalevent = Object.assign({}, this.event);
+    this.event = new Event({
+      id:-1,
+      title:'',
+      description:'',
+      startDate: new Date(),
+      endDate:new Date()
+    }
+    );
+    this.originalevent = Object.assign({}, this.eventItem);
   }
 
  
