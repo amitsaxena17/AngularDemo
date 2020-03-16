@@ -14,11 +14,7 @@ export class AppComponent {
     this.securityObject = securityService.securityObject;
     
   }
-  login(): void {
-    event.preventDefault();
-    alert('here');
-    this.securityService.login();
-  }
+  
   logout(): void {
     this.securityService.logout();
   }

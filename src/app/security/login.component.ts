@@ -1,13 +1,13 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
+
 import { AppUser } from './app-user';
 import { AppUserAuth } from './app-user-auth';
 import { SecurityService } from './security.service';
-import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'ptc-login',
-  templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css']
+  templateUrl: './login.component.html'
 })
 export class LoginComponent implements OnInit {
   user: AppUser = new AppUser();
@@ -22,4 +22,12 @@ export class LoginComponent implements OnInit {
     this.returnUrl = this.route.snapshot.queryParamMap.get('returnUrl');
   }
 
+  login() {
+    this.securityService.login(this.user)
+    .subscribe(resp => {
+      this.securityObject = resp;
+    });
+    this.router.navigate(['/Events'])
+
   }
+}

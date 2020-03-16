@@ -16,20 +16,17 @@ const httpOptions = {
 
 @Injectable()
 export class eventService {
-
+  BearerToken : string ='';
   constructor(private http: HttpClient) { 
-    
-
+    this.BearerToken = 'Bearer ' +localStorage.getItem("bearerToken");
   }
 
   getevents(): Observable<Event[]> {
-    var BearerToken = 'Bearer ' +localStorage.getItem("bearerToken");
-    
+   
     var headerAPI = {
       headers: new HttpHeaders()
-        .set('Authorization',  BearerToken)
+        .set('Authorization',  this.BearerToken)
     }
-    
     return this.http.get(API_URL + '/events',headerAPI).pipe(
       map(res => {
         return res.items.map(item => {
@@ -54,6 +51,7 @@ export class eventService {
   addevent(entity: Event): Observable<Event> {
     return this.http.post<Event>(API_URL, entity, httpOptions);
   }
+  
 
   updateevent(entity: Event): Observable<any> {
     return this.http.put(API_URL, entity, httpOptions);

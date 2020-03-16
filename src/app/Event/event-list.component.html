@@ -1,6 +1,6 @@
 <div class="row">
   <div class="col-xs-12">
-    <h1>event List</h1>
+    <h1>Event List</h1>
   </div>
 </div>
 
@@ -17,10 +17,10 @@
     <thead>
       <tr>
         <th>Edit</th>
-        <th>event Name</th>
-        <th>Introduction Date</th>
-        <th class="text-right">Price</th>
-        <th>URL</th>
+        <th>Event Name</th>
+        <th>Description</th>
+        <th class="text-right">Start Date</th>
+        <th>End Date</th>
         <th>Delete</th>
       </tr>
     </thead>
@@ -32,9 +32,9 @@
           </a>
         </td>
         <td>{{event.title}}</td>
-        <td>{{event.startDate}</td>
-        <td class="text-right">{{event.description}}</td>
-        <td>{{event.description}}</td>
+        <td>{{event.description}</td>
+        <td class="text-right">{{event.startDate}}</td>
+        <td>{{event.endDate}}</td>
         <td>
           <button (click)="deleteevent(event.id)" class="btn btn-danger">
             <i class="glyphicon glyphicon-trash"></i>

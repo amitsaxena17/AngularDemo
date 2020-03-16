@@ -7,8 +7,7 @@ import { AppComponent } from './app.component';
 import { eventListComponent } from './Event/event-list.component';
 import { eventDetailComponent } from './Event/event-detail.component';
 import { eventService } from './Event/event.service';
-import { CategoryService } from './category/category.service';
-import { CategoryListComponent } from './category/category-list.component';
+
 import { AppRoutingModule } from './app-routing.module';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { SecurityService } from './security/security.service';
@@ -21,7 +20,6 @@ import { GlobalDataService } from './globaldata.service';
     AppComponent,
     eventListComponent,
     eventDetailComponent,
-    CategoryListComponent,
     DashboardComponent,
     LoginComponent
   ],
@@ -32,7 +30,7 @@ import { GlobalDataService } from './globaldata.service';
     AppRoutingModule,
     HttpInterceptorModule
   ],
-  providers: [eventService, CategoryService,SecurityService,GlobalDataService],
+  providers: [eventService, SecurityService,GlobalDataService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

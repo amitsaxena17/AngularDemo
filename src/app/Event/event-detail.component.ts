@@ -5,7 +5,6 @@ import { Location } from '@angular/common';
 import { eventService } from "./event.service";
 import { Event } from './event';
 import { Category } from '../category/category';
-import { CategoryService } from '../category/category.service';
 
 @Component({
   templateUrl: './event-detail.component.html'
@@ -15,7 +14,7 @@ export class eventDetailComponent implements OnInit {
   originalevent: Event;
   categories: Category[];
 
-  constructor(private categoryService: CategoryService,
+  constructor(
     private eventService: eventService,
     private route: ActivatedRoute,
     private location: Location) { }
@@ -48,10 +47,7 @@ export class eventDetailComponent implements OnInit {
     this.originalevent = Object.assign({}, this.event);
   }
 
-  private getCategories(): void {
-    // this.categoryService.getCategories()
-    //   .subscribe(categories => this.categories = categories);
-  }
+ 
 
   saveData(): void {
     if (this.event.id) {
