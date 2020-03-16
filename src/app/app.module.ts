@@ -4,8 +4,8 @@ import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
-import { ProductListComponent } from './Event/event-list.component';
-import { ProductDetailComponent } from './Event/event-detail.component';
+import { eventListComponent } from './Event/event-list.component';
+import { eventDetailComponent } from './Event/event-detail.component';
 import { eventService } from './Event/event.service';
 import { CategoryService } from './category/category.service';
 import { CategoryListComponent } from './category/category-list.component';
@@ -19,8 +19,8 @@ import { GlobalDataService } from './globaldata.service';
 @NgModule({
   declarations: [
     AppComponent,
-    ProductListComponent,
-    ProductDetailComponent,
+    eventListComponent,
+    eventDetailComponent,
     CategoryListComponent,
     DashboardComponent,
     LoginComponent

@@ -18,10 +18,7 @@ const routes: Routes = [
     path: 'products', 
     component: eventListComponent
   },
-  // { 
-  //   path: 'productDetail/:id', 
-  //   component: ProductDetailComponent
-  // },
+  
   {
     path: 'categories',
     component: CategoryListComponent
