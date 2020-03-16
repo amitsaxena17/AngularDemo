@@ -23,16 +23,16 @@ export class LoginComponent implements OnInit {
   }
 
   login() {
-    this.securityService.login(this.user)
+    this.securityService.login()
       .subscribe(resp => {
         this.securityObject = resp;
-        if (this.returnUrl) {
-          this.router.navigateByUrl(this.returnUrl);
-        }
+        this.router.navigateByUrl("http://localhost:4200/products");
+        
       },
         () => {
           // Initialize security object to display error message
           this.securityObject = new AppUserAuth();
         });
+        this.router.navigateByUrl("http://localhost:4200/products");
   }
 }

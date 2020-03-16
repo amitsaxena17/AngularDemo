@@ -28,12 +28,14 @@ export class SecurityService {
 
   }
 
-  login(clientId): Observable<AppUserAuth> {
+  login(): Observable<AppUserAuth> {
     // Initialize security object
     this.resetSecurityObject();
  
-    clientId = "1a8dd55d-50ce-4220-92f7-a3e558520c75";
+    var clientId = "1a8dd55d-50ce-4220-92f7-a3e558520c75";
     var clientSecret = "ttHIvXc7bzaq56G5FL4jHiwh3/1CEcJD3kBa7Ak5HvY=";
+//Move them to settings file
+
     let headers = new Headers();
     headers.append('Content-Type', 'application/json');
 
