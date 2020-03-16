@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-
+import { Observable } from 'rxjs/Observable';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import {
   map
@@ -21,41 +21,27 @@ export class eventService {
     this.BearerToken = 'Bearer ' +localStorage.getItem("bearerToken");
   }
 
-//   getevents(): Observable<Event[]> {
+  getevents(): Observable<Event[]> {
    
-//     var headerAPI = {
-//       headers: new HttpHeaders()
-//         .set('Authorization',  this.BearerToken)
-//     }
-//     return this.http.get(API_URL + '/events',headerAPI).pipe(
-//       map(res => {
-//         return res.items.map(item => {
-//           return new Event(
-//             item.id,
-//             item.title,
-//             item.description,
-//             item.startDate,
-//             item.endDate
-//           );
-//         });
-//       })
-//     );
-// }
-getevents(){
-   
-      var headerAPI = {
-        headers: new HttpHeaders()
-          .set('Authorization',  this.BearerToken)
-      }
-     
-      this.http.get(API_URL + '/events',headerAPI)
-      .success(function(data) {
-        return data.items; // response data
-        
+    var headerAPI = {
+      headers: new HttpHeaders()
+        .set('Authorization',  this.BearerToken)
+    }
+    return this.http.get(API_URL + '/events',headerAPI).pipe(
+      map(res => {
+        return res.items.map(item => {
+          return new Event(
+            item.id,
+            item.title,
+            item.description,
+            item.startDate,
+            item.endDate
+          );
         });
-      };
-       
-    };
+      })
+    );
+}
+
   
 
   // function() {
