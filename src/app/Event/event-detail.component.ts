@@ -37,28 +37,21 @@ export class eventDetailComponent implements OnInit {
 
   private initevent(): void {
     // Add a new event
-    this.eventItem = new Event({
-      id:-1,
-      title:'',
-      description:'',
-      startDate: new Date(),
-      endDate:new Date()
-    }
-    );
+    this.event = new Event();
     this.originalevent = Object.assign({}, this.eventItem);
   }
 
  
 
   saveData(): void {
-    if (this.event.id) {
+    if (this.eventItem.id) {
       // Update event
      
     }
     else {
       // Add a event
       this.eventService.addevent(this.eventItem)
-        .subscribe(event => { this.eventItem = event },
+        .subscribe(eventItem => { this.eventItem = eventItem },
           () => null,
           () => this.dataSaved());
     }

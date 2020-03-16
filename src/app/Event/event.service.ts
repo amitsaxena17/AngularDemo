@@ -38,7 +38,7 @@ export class eventService {
       headers: new HttpHeaders()
         .set('Authorization',  this.BearerToken)
     }
-    return this.http.post(API_URL + '/events',entity,headerAPI).pipe(catchError(this.handleError)); ; 
+    return this.http.post(API_URL + '/events',entity,headerAPI); ; 
   }
   
   handleError(errorResponse: HttpErrorResponse) {
@@ -47,8 +47,7 @@ export class eventService {
     } else {
         console.error('Server Side Error :', errorResponse);
     }
-    return new ErrorObservable('There is a problem with the service. We are notified & working on it. Please try again later.');
-    }
+  }
     
   deleteEvent()
   {
