@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-
+import { Observable } from 'rxjs/Observable';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { AppUserAuth } from './app-user-auth';
 import 'rxjs/add/operator/map';
@@ -24,7 +24,7 @@ export class SecurityService {
 
   }
 
-  login(): void {
+  login(): Observable<AppUserAuth> {
     // Initialize security object
     this.resetSecurityObject();
  
@@ -35,7 +35,7 @@ export class SecurityService {
     let headers = new Headers();
     headers.append('Content-Type', 'application/json');
 
-     this.http.post(API_URL, {clientId, clientSecret}, {
+    return this.http.post(API_URL, {clientId, clientSecret}, {
      
           headers: new HttpHeaders().set('Content-Type', 'application/json'),
         }).map((response: Response) => {
@@ -80,6 +80,6 @@ export class SecurityService {
     this.securityObject.canAccessCategories = false;
     this.securityObject.canAddCategory = false;
   
-    localStorage.removeItem("bearerToken");
+    //localStorage.removeItem("bearerToken");
   }
 }
