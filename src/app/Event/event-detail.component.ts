@@ -48,8 +48,8 @@ export class eventDetailComponent implements OnInit {
       startDate: new Date(),
       id: -1,
       endDate: new Date,
-      title:'',
-      description:''
+      title:'Event Condition:',
+      description:'Event Detail:'
     });
     this.originalevent = Object.assign({}, this.eventItem);
   }
