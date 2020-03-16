@@ -8,7 +8,7 @@ import { eventService } from './event.service';
   templateUrl: './event-list.component.html'
 })
 export class eventListComponent implements OnInit {
-  events: Event;
+  events: Event[];
   
   constructor(private eventService: eventService,
     private router: Router) { 
